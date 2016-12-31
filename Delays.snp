@@ -4,7 +4,7 @@
 -- Date: 2015-05-14
 -- Author: Miguel A. Risco-Castillo
 -- Description: Simple delay routine for SBA Controller. Before call you must
--- fill Dlytmp with the appropriate value. Put the snippet in the rutines
+-- fill Dlytmp with the appropriate value. Put the snippet in the routines
 -- section of the user program. If you need a longer delay you can increase the
 -- number of bits for the Dlytmp variable.
 -- /SBA: End -------------------------------------------------------------------
