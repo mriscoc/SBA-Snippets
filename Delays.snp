@@ -10,7 +10,7 @@
 -- /SBA: End -------------------------------------------------------------------
 
 -- /SBA: User Registers and Constants ------------------------------------------
-  variable Dlytmp  : unsigned(15 downto 0);      -- Delay 16 bit register
+   variable Dlytmp  : unsigned(15 downto 0);      -- Delay 16 bit register
 -- /SBA: End -------------------------------------------------------------------
 
 -- /SBA: User Program ----------------------------------------------------------

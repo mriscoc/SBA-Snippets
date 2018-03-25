@@ -10,8 +10,8 @@
 -- /SBA: End Program Details ---------------------------------------------------
 
 -- /SBA: User Registers and Constants --======================================--
-  variable bin_in  : unsigned(15 downto 0);      -- 16 bit input register
-  variable bcd_out : unsigned(19 downto 0);      -- 20 bit output register
+   variable bin_in  : unsigned(15 downto 0);      -- 16 bit input register
+   variable bcd_out : unsigned(19 downto 0);      -- 20 bit output register
 -- /SBA: End User Registers and Constants --------------------------------------
 
 -- /SBA: User Program --======================================================--
