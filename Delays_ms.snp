@@ -21,9 +21,9 @@
 -- /SBA: End -------------------------------------------------------------------
 
 -- /SBA: User Registers and Constants ------------------------------------------
-  constant ms         : positive:= positive(real(sysfrec)/real(1000)+0.499)-1;
-  variable DlyReg_1ms : positive; -- Constant Delay of 1ms
-  variable Dlytmp_ms  : positive; -- Delay register in ms
+   constant ms         : positive:= positive(real(sysfrec)/real(1000)+0.499)-1;
+   variable DlyReg_1ms : positive; -- Constant Delay of 1ms
+   variable Dlytmp_ms  : positive; -- Delay register in ms
 -- /SBA: End -------------------------------------------------------------------
 
 -- /SBA: User Program ----------------------------------------------------------
@@ -32,7 +32,7 @@
 => if DlyReg_1ms/=0 then
      dec(DlyReg_1ms);
      SBAjump(Delay_ms+1);
-     end if;
+   end if;
 => if Dlytmp_ms/=0 then
      dec(Dlytmp_ms);
      SBAjump(Delay_ms);
