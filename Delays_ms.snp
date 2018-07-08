@@ -1,7 +1,7 @@
 -- /SBA: Program Details -------------------------------------------------------
 -- Snippet: Delay milisecond Snippet
--- Version: 1.2
--- Date: 2017/03/22
+-- Version: 1.3
+-- Date: 2018/07/08
 -- Author: Juan S. Vega Martinez
 -- Description: Simple delay routine for SBA Controller in miliseconds. Before
 -- call you must fill Dlytmp_ms with the appropriate value. Put the snippet in
@@ -9,6 +9,9 @@
 -- increase the number of bits for the Dlytmp_ms variable.
 --
 -- Release Notes:
+--
+-- 1.3 2018/07/08
+-- Change sysfrec to sysfreq (Miguel A. Risco-Castillo)
 --
 -- 1.2 2017/03/22
 -- Change setup vars to positive (Miguel A. Risco-Castillo)
@@ -21,7 +24,7 @@
 -- /SBA: End -------------------------------------------------------------------
 
 -- /SBA: User Registers and Constants ------------------------------------------
-   constant ms         : positive:= positive(real(sysfrec)/real(1000)+0.499)-1;
+   constant ms         : positive:= positive(real(sysfreq)/real(1000)+0.499)-1;
    variable DlyReg_1ms : positive; -- Constant Delay of 1ms
    variable Dlytmp_ms  : positive; -- Delay register in ms
 -- /SBA: End -------------------------------------------------------------------
