@@ -1,0 +1,37 @@
+-- /SBA: Program Details -------------------------------------------------------
+-- Snippet: Delay microsecond Snippet
+-- Version: 1.0
+-- Date: 2019/07/25
+-- Author: Miguel A. Risco-Castillo
+-- Description: Simple delay routine for SBA Controller in microseconds. Before
+-- call you must fill Dly_us with the appropriate value. Put the snippet in
+-- the rutines section of the user program. If you need a longer delay you can
+-- increase the number of bits for the Dlytmp_ms variable.
+-- This snipped is based on the Delays milisecond of Juan Vega
+--
+-- Release Notes:
+--
+-- 1.0 2019/07/25
+-- Original release version
+-- /SBA: End -------------------------------------------------------------------
+
+-- /SBA: User Registers and Constants ------------------------------------------
+   constant us         : positive:= positive(real(sysfreq)/real(1E6)+0.499)-1;
+   variable DlyReg_1us : natural;  -- Delay of 1us
+   variable Dly_us     : natural;  -- Delay register in us
+-- /SBA: End -------------------------------------------------------------------
+
+-- /SBA: User Program ----------------------------------------------------------
+-- /L:Delay_us
+=> DlyReg_1us:=us;
+=> if DlyReg_1us/=0 then
+     dec(DlyReg_1us);
+     SBAjump(Delay_us+1);
+   end if;
+=> if Dly_us/=0 then
+     dec(Dly_us);
+     SBAjump(Delay_us);
+   else
+     SBARet;
+   end if;
+-- /SBA: End -------------------------------------------------------------------
