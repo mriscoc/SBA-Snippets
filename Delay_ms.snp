@@ -1,14 +1,17 @@
 -- /SBA: Program Details -------------------------------------------------------
 -- Snippet: Delay milisecond Snippet
--- Version: 1.4
--- Date: 2019/06/16
+-- Version: 1.5
+-- Date: 2019/07/26
 -- Author: Juan S. Vega Martinez
 -- Description: Simple delay routine for SBA Controller in miliseconds. Before
--- call you must fill Dlytmp_ms with the appropriate value. Put the snippet in
+-- call you must fill Dly_ms with the appropriate value. Put the snippet in
 -- the rutines section of the user program. If you need a longer delay you can
--- increase the number of bits for the Dlytmp_ms variable.
+-- increase the number of bits for the Dly_ms variable.
 --
 -- Release Notes:
+--
+-- 1.5 2019/07/26
+-- Rename Delays_ms to Delay_ms, rename DlyTmp_ms to Dly_ms
 --
 -- 1.4 2019/06/16
 -- Change DlyReg_1ms and Dlytmp_ms to natural to allow zero value
@@ -24,13 +27,13 @@
 --
 -- 1.0 2015/11/22
 -- Original release version
--- /SBA: End -------------------------------------------------------------------
+-- /SBA: End Program Details ---------------------------------------------------
 
 -- /SBA: User Registers and Constants ------------------------------------------
    constant ms         : positive:= positive(real(sysfreq)/real(1000)+0.499)-1;
-   variable DlyReg_1ms : natural;  -- Constant Delay of 1ms
-   variable Dlytmp_ms  : natural;  -- Delay register in ms
--- /SBA: End -------------------------------------------------------------------
+   variable DlyReg_1ms : natural range 0 to ms;  -- Constant Delay of 1ms
+   variable Dly_ms     : natural;                -- Delay register in ms
+-- /SBA: End User Registers and Constants --------------------------------------
 
 -- /SBA: User Program ----------------------------------------------------------
 -- /L:Delay_ms
@@ -39,10 +42,10 @@
      dec(DlyReg_1ms);
      SBAjump(Delay_ms+1);
    end if;
-=> if Dlytmp_ms/=0 then
-     dec(Dlytmp_ms);
+=> if Dly_ms/=0 then
+     dec(Dly_ms);
      SBAjump(Delay_ms);
    else
      SBARet;
    end if;
--- /SBA: End -------------------------------------------------------------------
+-- /SBA: End User Program ------------------------------------------------------

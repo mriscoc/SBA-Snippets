@@ -17,8 +17,8 @@
 
 -- /SBA: User Registers and Constants ------------------------------------------
    constant us         : positive:= positive(real(sysfreq)/real(1E6)+0.499)-1;
-   variable DlyReg_1us : natural;  -- Delay of 1us
-   variable Dly_us     : natural;  -- Delay register in us
+   variable DlyReg_1us : natural range 0 to us;  -- Delay of 1us
+   variable Dly_us     : natural;                -- Delay register in us
 -- /SBA: End -------------------------------------------------------------------
 
 -- /SBA: User Program ----------------------------------------------------------
