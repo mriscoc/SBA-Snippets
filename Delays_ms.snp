@@ -1,0 +1,32 @@
+-- /SBA: Program Details -------------------------------------------------------
+-- Snippet: Delay milisecond Snippet
+-- Version: 1.0
+-- Date: 2015-11-22
+-- Author: Juan S. Vega Martinez
+-- Description: Simple delay routine for SBA Controller in miliseconds. Before
+-- call you must fill Dlytmp_ms with the appropriate value. Put the snippet in
+-- the rutines section of the user program. If you need a longer delay you can
+-- increase the number of bits for the Dlytmp_ms variable.
+-- /SBA: End -------------------------------------------------------------------
+
+-- /SBA: User Registers and Constants ------------------------------------------
+   constant ms : integer := integer(real(sysfrec)/real(1000)+0.499)-1;
+   variable DlyReg_1ms  : unsigned(15 downto 0);      -- Delay 16 bit register
+   variable Dlytmp_ms  : unsigned(15 downto 0);   -- Delay 16 bit register
+-- /SBA: End -------------------------------------------------------------------
+
+-- /SBA: User Program ----------------------------------------------------------
+-- /L:Delay_ms
+=> DlyReg_1ms:=to_unsigned(ms,DlyReg_1ms'length);
+-- /L:Loop_1ms
+=> if DlyReg_1ms/=0 then
+     dec(DlyReg_1ms);
+     SBAjump(Loop_1ms);
+     end if;
+=> if Dlytmp_ms/=0 then
+     dec(Dlytmp_ms);
+     SBAjump(Delay_ms);
+    else
+      SBARet;
+     end if;
+-- /SBA: End -------------------------------------------------------------------  
